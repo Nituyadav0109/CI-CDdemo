@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ltofinal
+
+spec:
+  selector:
+    matchLabels:
+      app: finallto
+    
+  template:
+    metadata:
+      labels:
+        app: finallto
+      
+    spec:
+      containers:
+        - name: capstonelto
+          image: nituyadav0109/newdockerone:latest
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: myservicefile1
+    labels:
+     app: finallto
+
+spec:
+   type: NodePort
+   ports:
+   - targetPort: 8000
+     port: 8000
+     nodePort: 30002
+   selector:
+      app: finallto
+      
+    
